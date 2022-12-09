@@ -1,0 +1,7 @@
+.app-container {
+  width: 40%;
+  margin: 0px auto;
+}
+section {
+  border: solid 1px black;
+}

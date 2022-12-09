@@ -8,5 +8,54 @@
     <script src="app.js" async></script>
   </head>
 
-  <body></body>
+  <body>
+    <div class="app-container">
+      <header>
+        <h1>shopping-list.js</h1>
+      </header>
+      <main>
+        <section class="add-item-container">
+          <form>
+            <input type="text" />
+            <select>
+              <option value="other">other</option>
+              <option value="beverage">beverage</option>
+              <option value="bread">bread</option>
+              <option value="candy">candy</option>
+              <option value="canned">canned</option>
+              <option value="cleaning">cleaning</option>
+              <option value="diary">diary</option>
+              <option value="fruit">fruit</option>
+              <option value="personal-care">personal care</option>
+              <option value="vegetable">vegetable</option>
+            </select>
+            <button type="submit">add</button>
+          </form>
+        </section>
+        <section class="to-buy-container">
+          <h2>To Buy:</h2>
+          <form>
+            <select>
+              <option value="all">all</option>
+              <option value="beverage">beverage</option>
+              <option value="bread">bread</option>
+              <option value="candy">candy</option>
+              <option value="canned">canned</option>
+              <option value="cleaning">cleaning</option>
+              <option value="diary">diary</option>
+              <option value="fruit">fruit</option>
+              <option value="personal-care">personal care</option>
+              <option value="vegetable">vegetable</option>
+              <option value="other">other</option>
+            </select>
+          </form>
+          <ul class="to-buy-list"></ul>
+        </section>
+        <section class="recently-bought-container">
+          <h2>Recently bought:</h2>
+          <ul class="to-buy-list"></ul>
+        </section>
+      </main>
+    </div>
+  </body>
 </html>
