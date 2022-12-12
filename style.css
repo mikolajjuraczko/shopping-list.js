@@ -5,3 +5,17 @@
 section {
   border: solid 1px black;
 }
+
+li {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20%;
+}
+
+li span {
+  font-style: italic;
+}
+
+ul {
+  padding: 0;
+}

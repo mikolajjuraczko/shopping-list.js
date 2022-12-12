@@ -16,8 +16,8 @@
       <main>
         <section class="add-item-container">
           <form>
-            <input type="text" />
-            <select>
+            <input type="text" id="add-item-input-field" />
+            <select id="add-item-aisle-select">
               <option value="other">other</option>
               <option value="beverage">beverage</option>
               <option value="bread">bread</option>
@@ -29,13 +29,13 @@
               <option value="personal-care">personal care</option>
               <option value="vegetable">vegetable</option>
             </select>
-            <button type="submit">add</button>
+            <button type="submit" id="add-item-button">add</button>
           </form>
         </section>
         <section class="to-buy-container">
           <h2>To Buy:</h2>
           <form>
-            <select>
+            <select id="to-buy-aisle-select">
               <option value="all">all</option>
               <option value="beverage">beverage</option>
               <option value="bread">bread</option>
@@ -49,7 +49,7 @@
               <option value="other">other</option>
             </select>
           </form>
-          <ul class="to-buy-list"></ul>
+          <ul id="to-buy-list"></ul>
         </section>
         <section class="recently-bought-container">
           <h2>Recently bought:</h2>
