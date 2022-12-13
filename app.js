@@ -17,39 +17,46 @@ const toBuyList = document.querySelector("#to-buy-list");
 const recentlyBoughtList = document.querySelector("#recently-bought-list");
 
 // Event listeners
+document.addEventListener("DOMContentLoaded", loadStorage);
 addItemButton.addEventListener("click", addItemToBuy);
 toBuyAisleSelect.addEventListener("click", toBuyAisleSort);
-toBuyList.addEventListener("click", toBuyCheckOff);
+toBuyList.addEventListener("click", toBuyCheckOffTrash);
 
 // Functions
 function addItemToBuy(e) {
+  // Validate if the string is not empty and prevent the default form behavior
   e.preventDefault();
+  if (addItemInputField.value !== "") {
+    // Create an element to add
+    const toBuyElementObject = {
+      elementName: addItemInputField.value,
+      elementAisle: addItemAisleSelect.value,
+    };
 
-  // Create an element to add
-  const toBuyElementObject = {
-    elementName: addItemInputField.value,
-    elementAisle: addItemAisleSelect.value,
-  };
+    // Store the element in the local storage
+    let toBuyListStored = JSON.parse(localStorage.getItem("toBuyListStored"));
+    toBuyListStored.push(toBuyElementObject);
+    localStorage.setItem("toBuyListStored", JSON.stringify(toBuyListStored));
 
-  // Store the element in the local storage
-  let toBuyListStored = JSON.parse(localStorage.getItem("toBuyListStored"));
-  toBuyListStored.push(toBuyElementObject);
-  localStorage.setItem("toBuyListStored", JSON.stringify(toBuyListStored));
+    // Add the element to the "To buy" list
+    const toBuyElementLi = document.createElement("li");
+    toBuyElementLi.classList.add(toBuyElementObject.elementAisle);
+    const toBuyElementP = document.createElement("p");
+    toBuyElementP.innerHTML = `${toBuyElementObject.elementName} <span class="aisle">(${toBuyElementObject.elementAisle})</span>`;
+    const toBuyElementCheckOffButton = document.createElement("button");
+    toBuyElementCheckOffButton.classList.add("check-mark-button");
+    toBuyElementCheckOffButton.innerText = "Done";
+    const toBuyElementTrashButton = document.createElement("button");
+    toBuyElementTrashButton.classList.add("trash-button");
+    toBuyElementTrashButton.innerText = "Trash";
+    toBuyElementLi.appendChild(toBuyElementP);
+    toBuyElementLi.appendChild(toBuyElementCheckOffButton);
+    toBuyElementLi.appendChild(toBuyElementTrashButton);
+    toBuyList.appendChild(toBuyElementLi);
 
-  // Add the element to the "To buy" list
-  const toBuyElementLi = document.createElement("li");
-  toBuyElementLi.classList.add(toBuyElementObject.elementAisle);
-  const toBuyElementP = document.createElement("p");
-  const toBuyElementButton = document.createElement("button");
-  toBuyElementButton.classList.add("check-mark-button");
-  toBuyElementButton.innerText = "Done";
-  toBuyElementP.innerHTML = `${toBuyElementObject.elementName} <span class="aisle">(${toBuyElementObject.elementAisle})</span>`;
-  toBuyElementLi.appendChild(toBuyElementP);
-  toBuyElementLi.appendChild(toBuyElementButton);
-  toBuyList.appendChild(toBuyElementLi);
-
-  // Clear the input field
-  addItemInputField.value = "";
+    // Clear the input field
+    addItemInputField.value = "";
+  }
 }
 
 function toBuyAisleSort(e) {
@@ -126,7 +133,8 @@ function toBuyAisleSort(e) {
   });
 }
 
-function toBuyCheckOff(e) {
+function toBuyCheckOffTrash(e) {
+  // Check mark button behavior
   if (e.target.classList.contains("check-mark-button")) {
     // Get the element name
     const toBuyListElement = e.target.parentElement;
@@ -139,7 +147,7 @@ function toBuyCheckOff(e) {
     );
 
     toBuyListStored.every((item) => {
-      // Add the element to the "Recently Bought" stored list:
+      // Add the element to the "Recently Bought" *stored* list:
       if (item.elementName === elementName) {
         recentlyBoughtListStored.push(item);
         if (recentlyBoughtListStored.length > 5) {
@@ -171,7 +179,71 @@ function toBuyCheckOff(e) {
       return true;
     });
 
-    // Remove the element from the list
+    // Remove the element from the "To buy" list
     toBuyListElement.remove();
   }
+  // Trash button behavior
+  else if (e.target.classList.contains("trash-button")) {
+    // Get the element name
+    const toBuyListElement = e.target.parentElement;
+    const elementName = toBuyListElement.children[0].innerText.split(" ")[0];
+
+    // Get the "To buy" *stored* list
+    let toBuyListStored = JSON.parse(localStorage.getItem("toBuyListStored"));
+
+    // Find and remove the element from the "To buy" *stored* list
+    toBuyListStored.every((item) => {
+      if (item.elementName === elementName) {
+        toBuyListStored.splice(toBuyListStored.indexOf(item), 1);
+        localStorage.setItem(
+          "toBuyListStored",
+          JSON.stringify(toBuyListStored)
+        );
+        return false;
+      }
+      return true;
+    });
+
+    // Remove the element from the "To buy" list
+    toBuyListElement.remove();
+  }
+}
+
+function loadStorage() {
+  // Load the "To buy" *stored* list
+  let toBuyListStored = JSON.parse(localStorage.getItem("toBuyListStored"));
+
+  // Add the elements to the "To buy" list
+  toBuyListStored.forEach((item) => {
+    const toBuyElementObject = item;
+    const toBuyElementLi = document.createElement("li");
+    toBuyElementLi.classList.add(toBuyElementObject.elementAisle);
+    const toBuyElementP = document.createElement("p");
+    toBuyElementP.innerHTML = `${toBuyElementObject.elementName} <span class="aisle">(${toBuyElementObject.elementAisle})</span>`;
+    const toBuyElementCheckOffButton = document.createElement("button");
+    toBuyElementCheckOffButton.classList.add("check-mark-button");
+    toBuyElementCheckOffButton.innerText = "Done";
+    const toBuyElementTrashButton = document.createElement("button");
+    toBuyElementTrashButton.classList.add("trash-button");
+    toBuyElementTrashButton.innerText = "Trash";
+    toBuyElementLi.appendChild(toBuyElementP);
+    toBuyElementLi.appendChild(toBuyElementCheckOffButton);
+    toBuyElementLi.appendChild(toBuyElementTrashButton);
+    toBuyList.appendChild(toBuyElementLi);
+  });
+
+  // Load the "Recently bought" *stored* list
+  let recentlyBoughtListStored = JSON.parse(
+    localStorage.getItem("recentlyBoughtListStored")
+  );
+
+  // Add the elements to the "Recently bought" list
+  recentlyBoughtListStored.forEach((item) => {
+    const toBuyElementLi = document.createElement("li");
+    toBuyElementLi.classList.add(item.elementAisle);
+    const toBuyElementP = document.createElement("p");
+    toBuyElementP.innerHTML = `${item.elementName} <span class="aisle">(${item.elementAisle})</span>`;
+    toBuyElementLi.appendChild(toBuyElementP);
+    recentlyBoughtList.prepend(toBuyElementLi);
+  });
 }
