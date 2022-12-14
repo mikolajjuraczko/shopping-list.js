@@ -45,10 +45,10 @@ function addItemToBuy(e) {
     toBuyElementP.innerHTML = `${toBuyElementObject.elementName} <span class="aisle">(${toBuyElementObject.elementAisle})</span>`;
     const toBuyElementCheckOffButton = document.createElement("button");
     toBuyElementCheckOffButton.classList.add("check-mark-button");
-    toBuyElementCheckOffButton.innerText = "Done";
+    toBuyElementCheckOffButton.innerHTML = '<i class="fa-solid fa-check"></i>';
     const toBuyElementTrashButton = document.createElement("button");
     toBuyElementTrashButton.classList.add("trash-button");
-    toBuyElementTrashButton.innerText = "Trash";
+    toBuyElementTrashButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
     toBuyElementLi.appendChild(toBuyElementP);
     toBuyElementLi.appendChild(toBuyElementCheckOffButton);
     toBuyElementLi.appendChild(toBuyElementTrashButton);
@@ -229,10 +229,10 @@ function loadStorage() {
     toBuyElementP.innerHTML = `${toBuyElementObject.elementName} <span class="aisle">(${toBuyElementObject.elementAisle})</span>`;
     const toBuyElementCheckOffButton = document.createElement("button");
     toBuyElementCheckOffButton.classList.add("check-mark-button");
-    toBuyElementCheckOffButton.innerText = "Done";
+    toBuyElementCheckOffButton.innerHTML = '<i class="fa-solid fa-check"></i>';
     const toBuyElementTrashButton = document.createElement("button");
     toBuyElementTrashButton.classList.add("trash-button");
-    toBuyElementTrashButton.innerText = "Trash";
+    toBuyElementTrashButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
     toBuyElementLi.appendChild(toBuyElementP);
     toBuyElementLi.appendChild(toBuyElementCheckOffButton);
     toBuyElementLi.appendChild(toBuyElementTrashButton);

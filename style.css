@@ -3,29 +3,14 @@
 /* ========== */
 :root {
   --clr-neutral-100: #ffffff;
-  --clr-neutral-200: #eeeeee;
-  --clr-neutral-500: #979797;
-  --clr-neutral-700: #666666;
-  --clr-neutral-900: #000000;
-  --clr-accent: #0088cc;
   --clr-green-accent: #2caa63;
+  --clr-red-accent: #da3338;
   --clr-section-container: #dddddd;
 
   font-size: 62.5%;
-  --fs-xl: 11.9rem;
-  --fs-900: 8.9rem;
-  --fs-800: 6.7rem;
-  --fs-700: 5rem;
   --fs-600: 3.7rem;
   --fs-500: 2.8rem;
   --fs-400: 2.1rem;
-  --fs-300: 1.6rem;
-  --fs-200: 1.2rem;
-  --fs-100: 0.9rem;
-  --fs-xs: 0.7rem;
-  --fs-xxs: 0.5rem;
-
-  scroll-behavior: smooth;
 }
 
 *,
@@ -60,7 +45,7 @@ p {
 /* App container */
 /* ==============*/
 .app-container {
-  width: min(90%, 720px);
+  width: min(90%, 620px);
   margin: 0 auto;
 }
 
@@ -69,6 +54,7 @@ p {
 header {
   color: var(--clr-neutral-100);
   margin-bottom: 1rem;
+  margin-top: 2rem;
 }
 
 header h1 {
@@ -87,7 +73,7 @@ header h1 {
 section {
   background-color: var(--clr-neutral-100);
   border-radius: 30px;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 section h2 {
@@ -97,18 +83,79 @@ section h2 {
 /* Add an item */
 /* ==============*/
 form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-form input {
-  font-size: var(--fs-400);
-  padding: 0.2em 0.3em;
+  display: flex;
+  flex-wrap: wrap;
 }
 
+form input {
+  font-size: var(--fs-400);
+  padding: 0.2em 0.2em;
+}
+
+form button {
+  font-size: var(--fs-500);
+  background: var(--clr-neutral-100);
+  color: var(--clr-green-accent);
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease-in;
+}
+
+form button:hover {
+  color: var(--clr-neutral-100);
+  background-color: var(--clr-green-accent);
+}
+
+/* To buy */
+/* ==============*/
+.fa-trash,
+.fa-check {
+  pointer-events: none;
+}
+
+.check-mark-button {
+  font-size: var(--fs-400);
+  color: var(--clr-neutral-100);
+  background: var(--clr-green-accent);
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease-in;
+}
+.check-mark-button:hover {
+  background-color: var(--clr-neutral-100);
+  color: var(--clr-green-accent);
+}
+
+.trash-button {
+  font-size: var(--fs-400);
+  color: var(--clr-neutral-100);
+  background: var(--clr-red-accent);
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease-in;
+}
+
+.trash-button:hover {
+  background-color: var(--clr-neutral-100);
+  color: var(--clr-red-accent);
+}
+
+#to-buy-title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+#to-buy-title select {
+  height: 3.6rem;
+  background-color: var(--clr-neutral-100);
+}
+
+/* List Elements*/
+/* ===============*/
 li {
   display: flex;
   justify-content: space-between;
-  /* margin: 0 5%; */
 }
 
 li p {
@@ -120,5 +167,12 @@ li span {
 }
 
 ul {
-  padding: 0;
+  padding: 1rem;
+}
+
+/* ========== */
+/* Utilities */
+/* ========== */
+.small-margin-bottom {
+  margin-bottom: 1rem;
 }
