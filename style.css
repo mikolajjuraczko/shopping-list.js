@@ -1,15 +1,118 @@
-.app-container {
-  width: 40%;
-  margin: 0px auto;
+/* ========== */
+/* General */
+/* ========== */
+:root {
+  --clr-neutral-100: #ffffff;
+  --clr-neutral-200: #eeeeee;
+  --clr-neutral-500: #979797;
+  --clr-neutral-700: #666666;
+  --clr-neutral-900: #000000;
+  --clr-accent: #0088cc;
+  --clr-green-accent: #2caa63;
+  --clr-section-container: #dddddd;
+
+  font-size: 62.5%;
+  --fs-xl: 11.9rem;
+  --fs-900: 8.9rem;
+  --fs-800: 6.7rem;
+  --fs-700: 5rem;
+  --fs-600: 3.7rem;
+  --fs-500: 2.8rem;
+  --fs-400: 2.1rem;
+  --fs-300: 1.6rem;
+  --fs-200: 1.2rem;
+  --fs-100: 0.9rem;
+  --fs-xs: 0.7rem;
+  --fs-xxs: 0.5rem;
+
+  scroll-behavior: smooth;
 }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.6;
+  font-size: var(--fs-400);
+  font-weight: 400;
+  margin: 0;
+  color: var(--clr-neutral-900);
+  background-color: var(--clr-green-accent);
+}
+
+h1,
+h2,
+h3,
+h4,
+ul,
+p {
+  margin: 0;
+}
+
+/* ========== */
+/* Components */
+/* ========== */
+
+/* App container */
+/* ==============*/
+.app-container {
+  width: min(90%, 720px);
+  margin: 0 auto;
+}
+
+/* Header */
+/* ==============*/
+header {
+  color: var(--clr-neutral-100);
+  margin-bottom: 1rem;
+}
+
+header h1 {
+  font-size: var(--fs-600);
+}
+
+/* Sections */
+/* ==============*/
+.section-container {
+  background-color: var(--clr-section-container);
+  padding: 1rem;
+  border-radius: 30px;
+  margin-bottom: 1rem;
+}
+
 section {
-  border: solid 1px black;
+  background-color: var(--clr-neutral-100);
+  border-radius: 30px;
+  padding: 1rem;
+}
+
+section h2 {
+  font-size: var(--fs-500);
+}
+
+/* Add an item */
+/* ==============*/
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+form input {
+  font-size: var(--fs-400);
+  padding: 0.2em 0.3em;
 }
 
 li {
   display: flex;
   justify-content: space-between;
-  margin: 0 20%;
+  /* margin: 0 5%; */
+}
+
+li p {
+  flex-grow: 1;
 }
 
 li span {

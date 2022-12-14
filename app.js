@@ -129,6 +129,13 @@ function toBuyAisleSort(e) {
           element.style.display = "none";
         }
         break;
+      case "other":
+        if (element.classList.contains("other")) {
+          element.style.display = "flex";
+        } else {
+          element.style.display = "none";
+        }
+        break;
     }
   });
 }
@@ -138,7 +145,7 @@ function toBuyCheckOffTrash(e) {
   if (e.target.classList.contains("check-mark-button")) {
     // Get the element name
     const toBuyListElement = e.target.parentElement;
-    const elementName = toBuyListElement.children[0].innerText.split(" ")[0];
+    const elementName = toBuyListElement.children[0].innerText.split(" (")[0];
 
     // Get the stored lists
     let toBuyListStored = JSON.parse(localStorage.getItem("toBuyListStored"));
@@ -186,7 +193,7 @@ function toBuyCheckOffTrash(e) {
   else if (e.target.classList.contains("trash-button")) {
     // Get the element name
     const toBuyListElement = e.target.parentElement;
-    const elementName = toBuyListElement.children[0].innerText.split(" ")[0];
+    const elementName = toBuyListElement.children[0].innerText.split(" (")[0];
 
     // Get the "To buy" *stored* list
     let toBuyListStored = JSON.parse(localStorage.getItem("toBuyListStored"));
