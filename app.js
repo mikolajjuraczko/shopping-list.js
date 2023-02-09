@@ -56,6 +56,11 @@ function addItemToBuy(e) {
 
     // Clear the input field
     addItemInputField.value = "";
+
+    // Set aisle sort to "all" and show all elements
+    toBuyAisleSelect.value = "all";
+    const toBuyListElements = toBuyList.childNodes;
+    toBuyListElements.forEach((element) => (element.style.display = "flex"));
   }
 }
 

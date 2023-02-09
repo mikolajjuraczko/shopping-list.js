@@ -4,6 +4,7 @@
 :root {
   --clr-neutral-100: #ffffff;
   --clr-green-accent: #2caa63;
+  --clr-light-green-accent: #e9f7ef;
   --clr-red-accent: #da3338;
   --clr-section-container: #dddddd;
 
@@ -80,6 +81,26 @@ section h2 {
   font-size: var(--fs-500);
 }
 
+/* Select */
+/* ==============*/
+form select {
+  font-size: var(--fs-400);
+  font-weight: bold;
+  color: var(--clr-green-accent);
+  background-color: var(--clr-neutral-100);
+  border: 2px solid var(--clr-green-accent);
+  border-radius: 5px;
+}
+
+form select:hover {
+  cursor: pointer;
+}
+
+form select:focus {
+  border: 2px solid var(--clr-red-accent);
+  outline: 0;
+}
+
 /* Add an item */
 /* ==============*/
 form {
@@ -87,23 +108,50 @@ form {
   flex-wrap: wrap;
 }
 
+@media (min-width: 48em) {
+  form {
+    flex-wrap: nowrap;
+  }
+}
+
 form input {
+  flex-grow: 1;
   font-size: var(--fs-400);
   padding: 0.2em 0.2em;
+  background-color: var(--clr-light-green-accent);
+  border: 2px solid var(--clr-green-accent);
+  border-radius: 5px;
+}
+
+form input:focus {
+  border: 2px solid var(--clr-red-accent);
+  outline: 0;
+}
+
+input:focus::placeholder {
+  color: transparent;
 }
 
 form button {
+  border: 2px solid var(--clr-green-accent);
+  border-radius: 5px;
   font-size: var(--fs-500);
-  background: var(--clr-neutral-100);
-  color: var(--clr-green-accent);
+  color: var(--clr-neutral-100);
+  background-color: var(--clr-green-accent);
   cursor: pointer;
-  border: none;
   transition: all 0.3s ease-in;
 }
 
 form button:hover {
-  color: var(--clr-neutral-100);
-  background-color: var(--clr-green-accent);
+  background: var(--clr-neutral-100);
+  color: var(--clr-green-accent);
+}
+
+form button:focus {
+  background: var(--clr-neutral-100);
+  color: var(--clr-green-accent);
+  border: 2px solid var(--clr-red-accent);
+  outline: 0;
 }
 
 /* To buy */
@@ -114,30 +162,48 @@ form button:hover {
 }
 
 .check-mark-button {
+  border-radius: 5px;
   font-size: var(--fs-400);
   color: var(--clr-neutral-100);
   background: var(--clr-green-accent);
+  border: 2px solid var(--clr-green-accent);
   cursor: pointer;
-  border: none;
   transition: all 0.3s ease-in;
 }
+
 .check-mark-button:hover {
   background-color: var(--clr-neutral-100);
   color: var(--clr-green-accent);
 }
 
+.check-mark-button:focus {
+  background: var(--clr-neutral-100);
+  color: var(--clr-green-accent);
+  border: 2px solid var(--clr-red-accent);
+  outline: 0;
+}
+
 .trash-button {
+  width: 33px;
   font-size: var(--fs-400);
   color: var(--clr-neutral-100);
+  border-radius: 5px;
   background: var(--clr-red-accent);
   cursor: pointer;
-  border: none;
+  border: 2px solid var(--clr-red-accent);
   transition: all 0.3s ease-in;
 }
 
 .trash-button:hover {
   background-color: var(--clr-neutral-100);
   color: var(--clr-red-accent);
+}
+
+.trash-button:focus {
+  background: var(--clr-neutral-100);
+  color: var(--clr-red-accent);
+  border: 2px solid var(--clr-red-accent);
+  outline: 0;
 }
 
 #to-buy-title {
@@ -160,6 +226,10 @@ li {
 
 li p {
   flex-grow: 1;
+  padding: 0.2em 0.2em;
+  background-color: var(--clr-light-green-accent);
+  border: 2px solid var(--clr-green-accent);
+  border-radius: 5px;
 }
 
 li span {
@@ -167,7 +237,7 @@ li span {
 }
 
 ul {
-  padding: 1rem;
+  padding: 1rem 0rem;
 }
 
 /* ========== */
